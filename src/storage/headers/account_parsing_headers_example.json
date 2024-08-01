@@ -1,0 +1,51 @@
+[
+  {
+    "url": "your_meaning",
+    "headers": {
+      "accept": "your_meaning",
+      "accept-language": "your_meaning",
+      "cookie": "your_meaning",
+      "priority": "your_meaning",
+      "referer": "your_meaning",
+      "sec-ch-ua": "your_meaning",
+      "sec-ch-ua-mobile": "your_meaning",
+      "sec-ch-ua-platform": "your_meaning",
+      "sec-fetch-dest": "your_meaning",
+      "sec-fetch-mode": "your_meaning",
+      "sec-fetch-site": "your_meaning",
+      "user-agent": "your_meaning"
+    },
+    "cookies": {
+      "_ttp": "your_meaning",
+      "tt_chain_token": "your_meaning",
+      "cookie-consent": "your_meaning",
+      "uid_tt": "your_meaning",
+      "uid_tt_ss": "your_meaning",
+      "sid_tt": "your_meaning",
+      "sessionid": "your_meaning",
+      "sessionid_ss": "your_meaning",
+      "store-idc": "your_meaning",
+      "store-country-code": "your_meaning",
+      "store-country-code-src": "your_meaning",
+      "tt-target-idc": "your_meaning",
+      "tt-target-idc-sign": "your_meaning",
+      "tiktok_webapp_theme": "your_meaning",
+      "tt_csrf_token": "your_meaning",
+      "tiktok_webapp_theme_auto_dark_ab": "your_meaning",
+      "tiktok_webapp_theme_source": "your_meaning",
+      "ak_bmsc": "your_meaning",
+      "sid_guard": "your_meaning",
+      "sid_ucp_v1": "your_meaning",
+      "ssid_ucp_v1": "your_meaning",
+      "perf_feed_cache": "your_meaning",
+      "msToken": "your_meaning",
+      "bm_sv": "your_meaning",
+      "passport_fe_beating_status": "your_meaning",
+      "ttwid": "your_meaning",
+      "odin_tt": "your_meaning"
+    }
+  },
+  {
+    "...": "..."
+  }
+]
