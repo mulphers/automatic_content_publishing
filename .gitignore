@@ -30,6 +30,11 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# Files that should not be shared
+src/storage/content/*.mp4
+src/storage/hashtags/hashtags.json
+src/storage/headers/account_parsing_headers.json
+
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
