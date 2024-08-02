@@ -19,5 +19,7 @@ class TikTokContentFinder(AbstractContentFinder):
                 content_id=item['id'],
                 url=item['video']['bitrateInfo'][0]['PlayAddr']['UrlList'][-1],
                 description=item['desc']
-            ) for item in response['itemList']
+            )
+
+            for item in response['itemList'] if 'bitrateInfo' in item['video']
         ]
