@@ -5,6 +5,7 @@ from src.core.app import App
 from src.core.settings import load_settings
 from src.database import TransactionGateway
 from src.database.core.connection import create_engine
+from src.services.tik_tok.content_downloader import ContentDownloaderFromTikTok
 from src.services.tik_tok.content_finder import TikTokContentFinder
 from src.services.tik_tok.content_unique_checker import \
     ContentUniqueCheckerWithDatabase
@@ -16,7 +17,8 @@ def main() -> None:
     app = App(
         settings=settings,
         content_finder=TikTokContentFinder(),
-        content_unique_checker=ContentUniqueCheckerWithDatabase()
+        content_unique_checker=ContentUniqueCheckerWithDatabase(),
+        content_downloader=ContentDownloaderFromTikTok()
     )
 
     database_engine = create_engine(
