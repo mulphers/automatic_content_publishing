@@ -6,6 +6,8 @@ from typing import Annotated, Never
 from fast_depends import Depends, inject
 
 from src.common.dto.content import ContentDTO
+from src.common.interfaces.abstract_content_downloader import \
+    AbstractContentDownloader
 from src.common.interfaces.abstract_content_finder import AbstractContentFinder
 from src.common.interfaces.abstract_content_unique_checker import \
     AbstractContentUniqueChecker
@@ -20,11 +22,13 @@ class App:
             self,
             settings: Settings,
             content_finder: AbstractContentFinder,
-            content_unique_checker: AbstractContentUniqueChecker
+            content_unique_checker: AbstractContentUniqueChecker,
+            content_downloader: AbstractContentDownloader
     ) -> None:
         self.settings = settings
         self.content_finder = content_finder
         self.content_unique_checker = content_unique_checker
+        self.downloader = content_downloader
 
     @inject
     def _drop_pending_content(
@@ -41,7 +45,8 @@ class App:
 
     @inject
     def _find_new_content(
-            self, gateway: Annotated[DatabaseGateway, Depends(TransactionGatewayMarker)],
+            self,
+            gateway: Annotated[DatabaseGateway, Depends(TransactionGatewayMarker)],
             content: list[ContentDTO]
     ) -> list[ContentDTO]:
         return self.content_unique_checker.find_new_content(
@@ -59,7 +64,7 @@ class App:
         )
 
         while True:
-            found_content = self.content_finder.find_content(  # type: ignore[call-arg]
+            found_content = self.content_finder.find_content(
                 url=url,
                 headers=headers,
                 cookies=cookies
@@ -71,6 +76,11 @@ class App:
 
             logging.debug(f'All content found: {len(found_content)}')
             logging.debug(f'New content found: {new_content}')
+
+            if new_content:
+                paths_to_content = self.downloader.download_content(content=new_content)
+
+                logging.debug(f'Downloaded {len(paths_to_content)} content')
 
             sleep(30)
 
