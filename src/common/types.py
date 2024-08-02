@@ -1,4 +1,4 @@
-from typing import TypeVar
+from typing import TypeAlias, TypeVar
 
 Model = TypeVar('Model')
 
@@ -7,3 +7,5 @@ TransactionType = TypeVar("TransactionType")
 
 EntryType = TypeVar("EntryType")
 ColumnType = TypeVar("ColumnType")
+
+PathToContent: TypeAlias = str
