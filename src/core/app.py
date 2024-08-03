@@ -9,6 +9,8 @@ from src.common.dto.content import ContentDTO
 from src.common.interfaces.abstract_content_downloader import \
     AbstractContentDownloader
 from src.common.interfaces.abstract_content_finder import AbstractContentFinder
+from src.common.interfaces.abstract_content_publisher import \
+    AbstractContentPublisher
 from src.common.interfaces.abstract_content_unique_checker import \
     AbstractContentUniqueChecker
 from src.common.markers.gateway import TransactionGatewayMarker
@@ -23,12 +25,14 @@ class App:
             settings: Settings,
             content_finder: AbstractContentFinder,
             content_unique_checker: AbstractContentUniqueChecker,
-            content_downloader: AbstractContentDownloader
+            content_downloader: AbstractContentDownloader,
+            content_publisher: AbstractContentPublisher
     ) -> None:
         self.settings = settings
         self.content_finder = content_finder
         self.content_unique_checker = content_unique_checker
         self.downloader = content_downloader
+        self.publisher = content_publisher
 
     @inject
     def _drop_pending_content(
@@ -81,6 +85,8 @@ class App:
                 paths_to_content = self.downloader.download_content(content=new_content)
 
                 logging.debug(f'Downloaded {len(paths_to_content)} content')
+
+                self.publisher.publish_content(paths=paths_to_content)
 
             sleep(30)
 
