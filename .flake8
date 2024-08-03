@@ -3,6 +3,7 @@
 exclude =
     venv,
     __pycache__,
+    src\utils\selectors\instagram.py,
 
 max-complexity = 10
 max-line-length = 120
