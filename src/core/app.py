@@ -88,7 +88,7 @@ class App:
 
                 self.publisher.publish_content(paths=paths_to_content)
 
-            sleep(30)
+            sleep(self.settings.delay)
 
     def _start_thread(self) -> None:
         for thread_id, account_parsing_settings in enumerate(self.settings.account_parsing):
