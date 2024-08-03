@@ -34,6 +34,7 @@ MANIFEST
 src/storage/content/*.mp4
 src/storage/hashtags/hashtags.json
 src/storage/headers/account_parsing_headers.json
+src/storage/cookies/*.pkl
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
