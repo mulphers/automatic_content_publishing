@@ -9,6 +9,8 @@ from src.services.tik_tok.content_downloader import ContentDownloaderFromTikTok
 from src.services.tik_tok.content_finder import TikTokContentFinder
 from src.services.tik_tok.content_unique_checker import \
     ContentUniqueCheckerWithDatabase
+from src.services.instagram.content_publisher import InstagramContentPublisher
+from src.common.webdriver.chrome import ChromeWebdriver
 
 
 def main() -> None:
@@ -18,7 +20,11 @@ def main() -> None:
         settings=settings,
         content_finder=TikTokContentFinder(),
         content_unique_checker=ContentUniqueCheckerWithDatabase(),
-        content_downloader=ContentDownloaderFromTikTok()
+        content_downloader=ContentDownloaderFromTikTok(),
+        content_publisher=InstagramContentPublisher(
+            settings=settings,
+            webdriver=ChromeWebdriver()
+        )
     )
 
     database_engine = create_engine(
