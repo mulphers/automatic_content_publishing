@@ -7,3 +7,6 @@ exclude =
 
 max-complexity = 10
 max-line-length = 120
+
+per-file-ignores =
+    src\services\instagram\content_publisher.py:F405,
